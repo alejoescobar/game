@@ -1,0 +1,41 @@
+<h1>Create player</h1>
+
+<%= form_for :player, url: players_path do |f| %>
+  <% if @player.errors.any? %>
+    <div id = "error_explanation">
+      <h2>
+        <%= pluralize(@player.errors.count, "error") %> prohibited this artice from being saved:
+      </h2>
+      <ul>
+        <% @player.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% elsif flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>  
+  <p>
+    <%= f.label :email %> <br>
+    <%= f.email_field :email %>
+  </p>
+  <p>
+    <%= f.label :name %> <br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :username %> <br>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :points %> <br>
+    <%= f.number_field :points %>
+  </p>
+  <p>
+    <%= f.label :active %> <br>
+    <%= f.check_box :active %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>  
